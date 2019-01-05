@@ -37,3 +37,12 @@ migrations-seeds:
 bash:
 	@docker exec -it sandbox-app /bin/bash
 
+# For CI
+up-ci: down-containers kill-containers up-containers add-to-group project-permissions composer clear-cache copy-files migrations-seeds node node_modules generate-key
+
+add-to-group:
+	@docker exec -it sandbox-app sudo apk --no-cache add shadow
+	@docker exec -it sandbox-app sudo usermod -a -G www-data ambientum
+
+project-permissions:
+	@docker exec -it sandbox-app sudo chmod -R 777 /var/www
