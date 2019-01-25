@@ -1,0 +1,36 @@
+.footer {
+    background-color: var(--footer_background_color);
+    min-height: 135px;
+
+    & .title,
+    & .text {
+        color: var(--footer_text_color);
+        display: block;
+        font-weight: normal;
+    }
+    
+    & .title {
+        text-transform: uppercase;
+        font-size: var(--footer_title_size);
+        margin-bottom: var(--footer_time_item_margin);
+    }
+
+    & .text {
+        font-size: var(--footer_text_size);
+    }
+
+    & .about {
+        max-width: 60ch;
+    }
+
+    & .time-list {
+        & > .time-item {
+            color: #fff;
+            font-size: var(--footer_text_size);
+        }
+    }
+
+    & .social-network {
+        margin-right: var(--foter_social_network_margin);
+    }
+}
