@@ -1,0 +1,51 @@
+.featured {
+    position: relative;
+
+    & .columns {
+        justify-content: space-around;
+        position: relative;
+    }
+
+    & .floated-box {
+        background-color: #fff;
+        box-shadow: 0px 0px 42px -5px rgba(0,0,0,0.28);
+        padding-bottom: 20px;
+        padding-top: 26px;
+        position: relative;
+        top: -40px;
+
+        @media screen and (max-width: 768px) {
+            margin-bottom: 20px;
+        }
+
+        & > .content {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+    
+            & > .icon {
+                height: auto;
+                margin-bottom: 18px;
+                width: 54px;
+            }
+
+            & > .title,
+            & > .subtitle {
+                font-weight: normal;
+            }
+
+            & > .title {
+                font-size: 20px;
+            }
+    
+            & > .subtitle {
+                font-size: 16px;
+            }
+    
+            & > .button {
+                width: 100%;
+            }
+        }
+    }
+}
