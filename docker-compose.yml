@@ -1,9 +1,5 @@
 version: '3'
 
-# Named volumes
-volumes:
-  sandbox-mysql-data:
-
 services:
   # PHP (with Nginx)
   app:
@@ -23,7 +19,7 @@ services:
     image: mysql:5.7
     container_name: sandbox-mysql
     volumes:
-      - sandbox-mysql-data:/var/lib/mysql
+      - ./mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:

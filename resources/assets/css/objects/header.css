@@ -1,0 +1,48 @@
+.container {
+    @media screen and (max-width: 1087px) {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.header {
+    & > .hero {
+        background-image: url('../img/header/background.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 350px;
+
+        & > .logo-container {
+            position: relative;
+
+            & .logo {
+                position: absolute;
+                top: -40px;
+                z-index: 30;
+            }
+        }
+    }
+}
+
+.navbar {
+    @media screen and (max-width: 1087px) {
+        z-index: 30;
+    }
+}
+
+.navbar-item {
+    @media screen and (min-width: 1088px) {
+        padding-top: 0;
+        border-top: 7px solid transparent;
+    }
+
+    @media screen and (max-width: 1087px) {
+        border-left: 7px solid transparent;
+    }
+}
+
+.navbar-item.is-active {
+    border-color: var(--menu_item_active_color);
+}
