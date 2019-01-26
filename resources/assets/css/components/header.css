@@ -33,6 +33,7 @@
 }
 
 .navbar-item {
+    font-family: Lato;
     @media screen and (min-width: 1088px) {
         padding-top: 0;
         border-top: 7px solid transparent;
