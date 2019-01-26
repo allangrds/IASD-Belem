@@ -52,5 +52,56 @@
         </div>
     </section>
 
+    <div class="container last-activity">
+        <div class="columns">
+            <div class="column is-6">
+                <section class="news">
+                    <h2 class="title">Últimas notícias</h2>
+                    <article class="item">
+                        <span class="time"><time>
+                            25 de julho de 2018, 19:22
+                        </time></span>
+                        <h1 class="title">Título da notícia</h1>
+                        <hr class="separator"/>
+                    </article>
+                </section>
+            </div>
+            <div class="column is-6">
+                <section class="photos">
+                    <h2 class="title">Últimas fotos</h2>
+                    <div class="columns">
+                        <div class="column">
+                            <img
+                                class="item"
+                                src="/images/home/foto1.png"
+                                alt=""
+                            />
+                        </div>
+                        <div class="column">
+                            <div class="columns">
+                                <div class="column">
+                                    <img
+                                        class="item"
+                                        src="/images/home/foto2.png"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <img
+                                        class="item"
+                                        src="/images/home/foto2.png"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
     @include('portal.template.footer')
 @endsection
