@@ -54,9 +54,11 @@
                         nossa história
                     </a>
                     <a class="
-                        navbar-item
-                        @if (Route::currentRouteName() === 'portal_contato') is-active @endif"
-                    ">
+                            navbar-item
+                            @if (Route::currentRouteName() === 'portal_contato') is-active @endif"
+                        "
+                        href={{ route('portal_contato') }}
+                    >
                         fale conosco
                     </a>
                     <div class="navbar-item">

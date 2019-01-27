@@ -2,4 +2,5 @@
 
 @import "settings/index.css";
 @import "base.css";
+@import "objects.css";
 @import "components/index.css";

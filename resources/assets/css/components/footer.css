@@ -1,6 +1,5 @@
 .footer {
     background-color: var(--footer_background_color);
-    margin-top: 50px;
     min-height: 135px;
 
     & .title,

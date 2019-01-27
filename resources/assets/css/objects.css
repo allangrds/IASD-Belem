@@ -1,0 +1,14 @@
+.button {
+    font-family: Lato;
+    height: auto;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.is-link {
+    background-color: #3498db !important;
+
+    &:hover {
+        background-color: #2980b9 !important;
+    }
+}
