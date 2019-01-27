@@ -1,0 +1,18 @@
+:root {
+  --footer_title_size: 16px;
+  --footer_text_size: 13px;
+}
+
+@font-face {
+  font-family: 'Bahnschrift';
+  font-weight: normal;
+  src: url('../fonts/bahnschrift/regular.woff') format('woff'),
+       url('../fonts/bahnschrift/regular.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: normal;
+  src: url('../fonts/lato/Lato-Regular.woff') format('woff'),
+       url('../fonts/lato/Lato-Regular.ttf')  format('truetype');
+}

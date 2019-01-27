@@ -1,0 +1,40 @@
+.footer {
+    background-color: var(--footer_background_color);
+    margin-top: 50px;
+    min-height: 135px;
+
+    & .title,
+    & .text {
+        color: var(--footer_text_color);
+        display: block;
+        font-weight: normal;
+    }
+    
+    & .title {
+        font-size: var(--footer_title_size);
+        font-family: Bahnschrift;
+        margin-bottom: var(--footer_time_item_margin);
+        text-transform: uppercase;
+    }
+
+    & .about {
+        max-width: 60ch;
+    }
+
+    & .text,
+    & .about {
+        font-family: Lato;
+        font-size: var(--footer_text_size);
+    }
+
+    & .time-list {
+        & > .time-item {
+            color: #fff;
+            font-size: var(--footer_text_size);
+        }
+    }
+
+    & .social-network {
+        margin-right: var(--foter_social_network_margin);
+    }
+}
