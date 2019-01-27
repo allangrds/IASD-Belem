@@ -24,6 +24,12 @@
             }
         }
     }
+
+    & .navbar {
+        @media screen and (max-width: 1087px) {
+            z-index: 31;
+        }
+    }
 }
 
 .navbar {
