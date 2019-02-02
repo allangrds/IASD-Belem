@@ -3,7 +3,7 @@
 @section('content')
     @include('portal.template.header')
 
-    <div class="contact">
+    <div class="contact page">
         <div class="header container">
             <h1 class="title">Fale conosco</h1>
         </div>
