@@ -42,9 +42,11 @@
                         informativo
                     </a>
                     <a class="
-                        navbar-item
-                        @if (Route::currentRouteName() === 'portal_lideranca') is-active @endif"
-                    ">
+                            navbar-item
+                            @if (Route::currentRouteName() === 'portal_lideranca') is-active @endif"
+                        "
+                        href={{ route('portal_lideranca') }}
+                    >
                         liderança
                     </a>
                     <a class="

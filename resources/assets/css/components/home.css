@@ -10,16 +10,8 @@
     }
 
     & .floated-box {
-        background-color: #fff;
-        box-shadow: 0px 0px 42px -5px rgba(0,0,0,0.28);
-        padding-bottom: 20px;
-        padding-top: 26px;
         position: relative;
         top: -40px;
-
-        @media screen and (max-width: 768px) {
-            margin-bottom: 20px;
-        }
 
         & > .content {
             align-items: center;
