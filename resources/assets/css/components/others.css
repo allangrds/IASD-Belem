@@ -1,0 +1,16 @@
+.panel {
+  background-color: #ECF0F3;
+  height: 100%;
+
+  & > .navbar {
+      border-top: 4px solid var(--menu_item_active_color);
+  }
+
+  & > .container {
+      padding-top: 20px;
+  }
+
+  & .hero-body {
+      padding-left: 0;
+  }
+}
