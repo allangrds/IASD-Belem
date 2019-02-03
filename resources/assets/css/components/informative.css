@@ -1,0 +1,68 @@
+.informative {
+    & .title-box {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    & .line {
+        margin-top: 10px;
+    }
+
+    & .list {
+        box-shadow: none;
+        list-style: none;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    & .schedule,
+    & .list {
+        font-family: Lato;
+    }
+
+    & .list {
+        box-shadow: none;
+        list-style: none;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    & .notice {
+        & .title,
+        & .text {
+            font-family: Lato;
+        }
+
+        & .title {
+            color: #7f8c8d;
+            font-weight: normal;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        &:not(:last) {
+            margin-bottom: 15px;
+        }
+    }
+
+    & .birthday {
+        text-align: center;
+
+        & .title,
+        & .date {
+            display: block;
+        }
+
+        & .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        & .date {
+            color: #7f8c8d;
+        }
+    }
+    
+}

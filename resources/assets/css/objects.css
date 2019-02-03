@@ -18,9 +18,17 @@
         padding-bottom: 30px;
         padding-top: 30px;
 
-        & > .title {
+        & > .title,
+        & > .date {
             font-family: Bahnschrift;
+        }
+
+        & > .title {
             font-weight: normal;
+        }
+
+        & > .date {
+            color: #7f8c8d;
         }
     }
 
@@ -34,10 +42,16 @@
 .floated-box {
     background-color: #fff;
     box-shadow: 0px 0px 42px -5px rgba(0,0,0,0.28);
-    padding-bottom: 20px;
-    padding-top: 26px;
+    padding: 20px 10px;
 
     @media screen and (max-width: 768px) {
         margin-bottom: 20px;
+    }
+
+    & .title {
+        font-family: Bahnschrift;
+        font-size: 22px;
+        font-weight: normal;
+        text-align: center;
     }
 }

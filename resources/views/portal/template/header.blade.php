@@ -36,8 +36,9 @@
                         culto ao vivo
                     </a>
                     <a class="
-                        navbar-item
-                        @if (Route::currentRouteName() === 'portal_informativo') is-active @endif"
+                            navbar-item
+                            @if (Route::currentRouteName() === 'portal_informativo') is-active @endif"
+                        href={{ route('portal_informativo') }}
                     ">
                         informativo
                     </a>

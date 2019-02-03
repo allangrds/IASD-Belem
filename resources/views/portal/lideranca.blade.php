@@ -13,7 +13,7 @@
                 <div class="columns">
                     <div class="column is-2">
                         <div class="floated-box">
-                            <span class="rule">Pastor</span>
+                            <span class="title">Pastor</span>
 
                             <figure class="image is-128x128">
                                 <img
