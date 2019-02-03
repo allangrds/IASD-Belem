@@ -64,13 +64,31 @@
                     >
                         fale conosco
                     </a>
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button">
-                                Entrar
-                            </a>
+                    @if (Auth::check())
+                        <div class="navbar-item is-hoverable">
+                            <a class="navbar-link">{{ Auth::user()->email }}</a>
+
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="{{ route('panel_users') }}">
+                                    Painel
+                                </a>
+                                <a class="navbar-item" href="{{ route('logout') }}">
+                                    Sair
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a
+                                    class="button"
+                                    href={{ route('login') }}
+                                >
+                                    Entrar
+                                </a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </nav>
