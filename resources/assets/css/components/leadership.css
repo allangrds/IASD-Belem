@@ -5,17 +5,8 @@
         display: block;
     }
 
-    & .floated-box {
-        padding: 20px 10px;
-    }
-
     & .name {
         font-weight: bold;
-    }
-
-    & .rule {
-        font-family: Bahnschrift;
-        font-size: 22px;
     }
 
     & .name,
