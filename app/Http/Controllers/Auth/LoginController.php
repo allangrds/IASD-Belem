@@ -96,7 +96,11 @@ class LoginController extends Controller
     protected function isUserDisabled(Request $request) {
         $user = User::where('email', $request->email)->first();
 
-        return !$user->is_active;
+        if($user) {
+            return !$user->is_active;
+        }
+
+        return false;
     }
 
     /**

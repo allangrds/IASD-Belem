@@ -1,4 +1,4 @@
-up: down-containers kill-containers up-containers composer clear-cache copy-files migrations-seeds node node_modules generate-key
+up: down-containers kill-containers up-containers composer clear-cache copy-files migrations-seeds node node_modules generate-key create-symlink create-final-assets
 
 down-containers:
 	@docker-compose down
@@ -35,10 +35,16 @@ migrations-seeds:
 	@docker exec -it sandbox-app php artisan migrate:refresh --seed
 
 bash:
-	@docker exec -it sandbox-app /bin/bash
+	@docker exec -it sandbox-deapp /bin/bash
+
+create-symlink:
+	@docker exec -it sandbox-app php artisan storage:link
+
+create-final-assets:
+	@docker exec -it sandbox-app npm run dev
 
 # For CI
-up-ci: down-containers kill-containers up-containers add-to-group project-permissions composer clear-cache copy-files migrations-seeds node node_modules generate-key
+up-ci: down-containers kill-containers up-containers add-to-group project-permissions composer clear-cache copy-files migrations-seeds node node_modules generate-key create-final-assets
 
 add-to-group:
 	@docker exec -it sandbox-app sudo apk --no-cache add shadow
