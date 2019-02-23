@@ -20,7 +20,7 @@ Nós seguimos o seguinte *style guide*: [pagarme/git-style-guide](https://github
 
 ### Como reportar um *bug*
 
-Se você encontrou alguma vulnerabilidade, **não abra uma issue**. Envie um e-mail para: [developers@pagar.me](mailto:developers@pagar.me).
+Se você encontrou alguma vulnerabilidade, **não abra uma issue**. Envie um e-mail para: [allangrds@gmail.com](mailto:allangrds@gmail.com).
 
 Quando reportar um *bug* certifique-se de incluir:
 - Seu sistema operacional;
