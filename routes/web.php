@@ -23,25 +23,49 @@ Route::middleware('throttle:15,1')->group(function () {
     });
 
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+});
 
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/painel', 'Panel\PanelController@index')
-            ->name('panel_home');
+Route::middleware(['throttle:25,1', 'auth'])->group(function () {
+    Route::get('/painel', 'Panel\PanelController@index')
+        ->name('panel_home');
 
-        Route::prefix('usuarios')->middleware(['can:handle_user'])->group(function () {
-            Route::get('/', 'Panel\UsersController@index')
-                ->name('panel_users');
+    Route::prefix('membros-da-igreja')->group(function () {
+        Route::get('/', 'Panel\ChurchMembersController@index')
+            ->name('panel_church_members');
 
-            Route::prefix('criar')->group(function () {
-                Route::get('/', 'Panel\UsersController@create')
-                    ->name('panel_users_create');
+        Route::prefix('criar')->group(function () {
+            Route::get('/', 'Panel\ChurchMembersController@create')
+                ->name('panel_church_members_create');
 
-                Route::post('/', 'Panel\UsersController@store')
-                    ->name('panel_users_store');
-            });
-
-            Route::delete('/${id}', 'Panel\UsersController@destroy')
-                ->name('panel_users_destroy');
+            Route::post('/', 'Panel\ChurchMembersController@store')
+                ->name('panel_church_members_store');
         });
+
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', 'Panel\ChurchMembersController@edit')
+                ->name('panel_church_members_edit');
+
+            Route::patch('/', 'Panel\ChurchMembersController@update')
+                ->name('panel_church_members_update');
+
+            Route::delete('/', 'Panel\ChurchMembersController@destroy')
+                ->name('panel_church_members_destroy');
+        });
+    });
+
+    Route::prefix('usuarios')->middleware(['can:handle_user'])->group(function () {
+        Route::get('/', 'Panel\UsersController@index')
+            ->name('panel_users');
+
+        Route::prefix('criar')->group(function () {
+            Route::get('/', 'Panel\UsersController@create')
+                ->name('panel_users_create');
+
+            Route::post('/', 'Panel\UsersController@store')
+                ->name('panel_users_store');
+        });
+
+        Route::delete('/{id}', 'Panel\UsersController@destroy')
+            ->name('panel_users_destroy');
     });
 });

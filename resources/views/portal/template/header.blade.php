@@ -69,7 +69,7 @@
                             <a class="navbar-link">{{ Auth::user()->email }}</a>
 
                             <div class="navbar-dropdown">
-                                <a class="navbar-item" href="{{ route('panel_users') }}">
+                                <a class="navbar-item" href="{{ route('panel_home') }}">
                                     Painel
                                 </a>
                                 <a class="navbar-item" href="{{ route('logout') }}">

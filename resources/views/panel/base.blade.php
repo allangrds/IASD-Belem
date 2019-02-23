@@ -61,6 +61,25 @@
                                 </a>
                             </li>
                         </ul>
+                        <p class="menu-label">
+                            Membros da igreja
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_church_members_create') is-active @endif"
+                                   href={{ route('panel_church_members_create') }}
+                                >
+                                    Criar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_church_members') is-active @endif"
+                                   href={{ route('panel_church_members') }}
+                                >
+                                    Listagem
+                                </a>
+                            </li>
+                        </ul>
                         @if(Auth::user()->can('handle_user'))
                             <p class="menu-label">
                                 Usuários
