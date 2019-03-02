@@ -80,6 +80,44 @@
                                 </a>
                             </li>
                         </ul>
+                        <p class="menu-label">
+                            Cargos
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_members_function_create') is-active @endif"
+                                   href={{ route('panel_members_function_create') }}
+                                >
+                                    Criar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_members_function') is-active @endif"
+                                   href={{ route('panel_members_function') }}
+                                >
+                                    Listagem
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="menu-label">
+                            Departamentos
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_departments_create') is-active @endif"
+                                   href={{ route('panel_departments_create') }}
+                                >
+                                    Criar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_departments') is-active @endif"
+                                   href={{ route('panel_departments') }}
+                                >
+                                    Listagem
+                                </a>
+                            </li>
+                        </ul>
                         @if(Auth::user()->can('handle_user'))
                             <p class="menu-label">
                                 Usuários

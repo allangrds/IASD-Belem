@@ -61,6 +61,92 @@
                         </div>
                     </div>
                     <div class="field">
+                        <label class="label" for="email">Email</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="email"
+                                name="email"
+                                placeholder="Email"
+                                type="email"
+                                value="{{ old('email') }}"
+                            />
+                            @if ($errors->has('email'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('email') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="telephone">Telefone</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="telephone"
+                                name="telephone"
+                                placeholder="Telefone"
+                                type="text"
+                                value="{{ old('telephone') }}"
+                            />
+                            @if ($errors->has('telephone'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('telephone') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="function">Cargo</label>
+                        <div class="control">
+                            <select
+                                class="input"
+                                id="function"
+                                name="function"
+                            >
+                                <option disabled selected>Escolha um cargo</option>
+                                @foreach($functions as $function)
+                                    <option
+                                        value={{ $function->id }}
+                                        @if(old('function') === $function->id) selected @endif
+                                    >
+                                        {{ $function->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('function'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('function') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="department">Departamento</label>
+                        <div class="control">
+                            <select
+                                class="input"
+                                id="department"
+                                name="department"
+                            >
+                                <option disabled selected>Escolha um departamento</option>
+                                @foreach($departments as $department)
+                                    <option
+                                        value={{ $department->id }}
+                                        @if(old('department') === $department->id) selected @endif
+                                    >
+                                        {{ $department->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('department'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('department') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
                         <label class="label" for="born_at">Data de nascimento</label>
                         <div class="control">
                             <input

@@ -4,14 +4,14 @@
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li class="is-active"><a href="#">Membros da igreja</a></li>
-            <li class="is-active"><a href="#">Criar</a></li>
+            <li class="is-active"><a href="#">Editar</a></li>
         </ul>
     </nav>
 
     <section class="hero is-small">
         <div class="hero-body">
             <h1 class="title">
-                Criação
+                Edição
             </h1>
             <h2 class="subtitle">
                 de membros da igreja
@@ -57,6 +57,96 @@
                             @if ($errors->has('name'))
                                 <span class="has-text-danger" role="alert">
                                     {{ $errors->first('name') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="email">Email</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="email"
+                                name="email"
+                                placeholder="Email"
+                                type="email"
+                                value="{{ old('email') ? old('email') : $member->email }}"
+                            />
+                            @if ($errors->has('email'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('email') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="telephone">Telefone</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="telephone"
+                                name="telephone"
+                                placeholder="Telefone"
+                                type="text"
+                                value="{{ old('telephone') ? old('telephone') : $member->telephone }}"
+                            />
+                            @if ($errors->has('telephone'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('telephone') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="function">Cargo</label>
+                        <div class="control">
+                            <select
+                                class="input"
+                                id="function"
+                                name="function"
+                            >
+                                <option disabled selected>Escolha um cargo</option>
+                                @foreach($functions as $function)
+                                    <option
+                                        value={{ $function->id }}
+                                        @if(old('function') === $function->id || $member->function_id === $function->id)
+                                            selected
+                                        @endif
+                                    >
+                                        {{ $function->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('function'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('function') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="department">Departamento</label>
+                        <div class="control">
+                            <select
+                                class="input"
+                                id="department"
+                                name="department"
+                            >
+                                <option disabled selected>Escolha um departamento</option>
+                                @foreach($departments as $department)
+                                    <option
+                                        value={{ $department->id }}
+                                        @if(old('department') === $department->id || $member->department_id === $department->id)
+                                            selected
+                                        @endif
+                                    >
+                                        {{ $department->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('department'))
+                                <span class="has-text-danger" role="alert">
+                                    {{ $errors->first('department') }}
                                 </span>
                             @endif
                         </div>
@@ -112,7 +202,7 @@
             </div>
             <div class="columns">
                 <div class="column">
-                    <button class="button is-primary">Criar</button>
+                    <button class="button is-primary">Editar</button>
                 </div>
             </div>
         </form>

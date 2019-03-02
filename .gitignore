@@ -16,4 +16,6 @@ mysql-data/
 postgres-data/
 public/images/*.png
 public/fonts
+storage/logs
+storage/app/public/images
 .idea/

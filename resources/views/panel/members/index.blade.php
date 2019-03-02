@@ -41,6 +41,8 @@
                 <th>Foto</th>
                 <th>Nome</th>
                 <th>Data de nascimento</th>
+                <th>Cargo</th>
+                <th>Departamento</th>
                 <th>Ativo</th>
                 <th>Opções</th>
                 <th></th>
@@ -61,6 +63,20 @@
                         </td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->born_at->format('d/m/Y') }}</td>
+                        <td>
+                            @foreach($functions as $function)
+                                @if($function->id == $user->function_id)
+                                    {{ $function->name }}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>
+                            @foreach($departments as $department)
+                                @if($department->id == $user->department_id)
+                                    {{ $department->name }}
+                                @endif
+                            @endforeach
+                        </td>
                         <td>{{ $user->is_active == true ? 'Sim' : 'Não' }}</td>
                         <td>
                             <a

@@ -1,12 +1,22 @@
 <?php
 
-Route::middleware('throttle:15,1')->group(function () {
+Route::middleware('throttle:25,1')->group(function () {
     Route::get('/', function () {
         return view('portal.home');
     })->name('portal_home');
 
     Route::get('/lideranca', function () {
-        return view('portal.lideranca');
+        $functions = App\MemberFunction::get(['id', 'name']);
+        $departments = App\Departments::get(['id', 'name']);
+        $leaderships = App\ChurchMembers::where('is_active', true)
+            ->orWhereRaw('function_id <> ""')
+            ->orWhereRaw('department_id <> ""')
+            ->get();
+
+        return view('portal.lideranca')
+            ->with('leaderships', $leaderships)
+            ->with('departments', $departments)
+            ->with('functions', $functions);
     })->name('portal_lideranca');
 
     Route::get('/informativo', function () {
@@ -67,5 +77,53 @@ Route::middleware(['throttle:25,1', 'auth'])->group(function () {
 
         Route::delete('/{id}', 'Panel\UsersController@destroy')
             ->name('panel_users_destroy');
+    });
+
+    Route::prefix('cargos')->group(function () {
+        Route::get('/', 'Panel\MembersFunctionController@index')
+            ->name('panel_members_function');
+
+        Route::prefix('criar')->group(function () {
+            Route::get('/', 'Panel\MembersFunctionController@create')
+                ->name('panel_members_function_create');
+
+            Route::post('/', 'Panel\MembersFunctionController@store')
+                ->name('panel_members_function_store');
+        });
+
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', 'Panel\MembersFunctionController@edit')
+                ->name('panel_members_function_edit');
+
+            Route::patch('/', 'Panel\MembersFunctionController@update')
+                ->name('panel_members_function_update');
+
+            Route::delete('/', 'Panel\MembersFunctionController@destroy')
+                ->name('panel_members_function_destroy');
+        });
+    });
+
+    Route::prefix('departamentos')->group(function () {
+        Route::get('/', 'Panel\DepartmentsController@index')
+            ->name('panel_departments');
+
+        Route::prefix('criar')->group(function () {
+            Route::get('/', 'Panel\DepartmentsController@create')
+                ->name('panel_departments_create');
+
+            Route::post('/', 'Panel\DepartmentsController@store')
+                ->name('panel_departments_store');
+        });
+
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', 'Panel\DepartmentsController@edit')
+                ->name('panel_departments_edit');
+
+            Route::patch('/', 'Panel\DepartmentsController@update')
+                ->name('panel_departments_update');
+
+            Route::delete('/', 'Panel\DepartmentsController@destroy')
+                ->name('panel_departments_destroy');
+        });
     });
 });

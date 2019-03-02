@@ -1,4 +1,4 @@
-up: down-containers kill-containers up-containers composer clear-cache copy-files migrations-seeds node node_modules generate-key create-symlink create-final-assets
+up: down-containers kill-containers up-containers composer clear-cache copy-files migrations-seeds node node_modules generate-key create-final-assets
 
 down-containers:
 	@docker-compose down
@@ -35,7 +35,7 @@ migrations-seeds:
 	@docker exec -it sandbox-app php artisan migrate:refresh --seed
 
 bash:
-	@docker exec -it sandbox-deapp /bin/bash
+	@docker exec -it sandbox-app /bin/bash
 
 create-symlink:
 	@docker exec -it sandbox-app php artisan storage:link
