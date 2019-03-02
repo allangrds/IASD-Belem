@@ -1,4 +1,4 @@
-@import "bulma/css/bulma.css";
+@import "vendor/bulma.min.css";
 
 @import "settings/index.css";
 @import "base.css";
