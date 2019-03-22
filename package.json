@@ -14,7 +14,7 @@
         "test": "snyk test"
     },
     "devDependencies": {
-        "@babel/preset-env": "7.3.1",
+        "@babel/preset-env": "7.4.2",
         "babel-eslint": "10.0.1",
         "commitizen": "3.0.7",
         "cross-env": "5.2.0",
