@@ -9,16 +9,34 @@ use Illuminate\Support\Facades\DB;
 
 Route::middleware('throttle:15,1')->group(function () {
     Route::get('/', function () {
+        $weekMap = [
+            0 => 'domingo',
+            1 => 'segunda',
+            2 => 'terca',
+            3 => 'quarta',
+            4 => 'quinta',
+            5 => 'sexta',
+            6 => 'sabado',
+        ];
+        $dayOfTheWeek = Carbon::now()->dayOfWeek;
+        $weekday = $weekMap[$dayOfTheWeek];
+
         $news = News::whereDate('published_at', '<=', date('Y-m-d'))
             ->where('show_on_home', true)
             ->paginate(5);
         $photos = Photos::join('news', 'news.id', '=', 'photos.news_id')
             ->whereDate('news.published_at', '<=', date('Y-m-d'))
             ->paginate(3);
+        $schedule = Schedule::where('is_active', true)
+            ->where('specific_day', date('Y-m-d'))
+            ->orWhere('week_day', $weekday)
+            ->orderBy('specific_day', 'desc')
+            ->first();
 
         return view('portal.home')
             ->with('photos', $photos)
-            ->with('news', $news);
+            ->with('news', $news)
+            ->with('schedule', $schedule);
     })->name('portal_home');
 
     Route::get('/culto-ao-vivo', function () {
