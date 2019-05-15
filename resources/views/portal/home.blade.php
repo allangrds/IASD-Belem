@@ -14,26 +14,28 @@
                     />
                     <h1 class="title">Culto ao vivo</h1>
                     <h2 class="subtitle">Veja nosso culto da sua casa</h2>
-                    <a class="button is-link" href="">
+                    <a class="button is-link" href="{{ route('portal_culto') }}">
                         Acompanhe agora
                     </a>
                 </div>
             </div>
 
-            <div class="column floated-box is-3-desktop is-3-tablet">
-                <div class="content">
-                    <img
-                        class="icon"
-                        src="/images/home/informativo.png"
-                        alt="Um folder dobrado"
-                    />
-                    <h1 class="title">Informativo</h1>
-                    <h2 class="subtitle">Veja a programação de 20/12</h2>
-                    <a class="button is-link" href="">
-                        Ler agora
-                    </a>
+            @if (!$schedule)
+                <div class="column floated-box is-3-desktop is-3-tablet">
+                    <div class="content">
+                        <img
+                            class="icon"
+                            src="/images/home/informativo.png"
+                            alt="Um folder dobrado"
+                        />
+                        <h1 class="title">Informativo</h1>
+                        <h2 class="subtitle">Veja a programação de hoje</h2>
+                        <a class="button is-link" href="{{ route('portal_informativo') }}">
+                            Ler agora
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endif
 
             <div class="column floated-box is-3-desktop is-3-tablet">
                 <div class="content">
@@ -44,7 +46,7 @@
                     />
                     <h1 class="title">Liderança</h1>
                     <h2 class="subtitle">Conheça nossos líderes</h2>
-                    <a class="button is-link" href="">
+                    <a class="button is-link" href="{{ route('portal_lideranca') }}">
                         Ver informações
                     </a>
                 </div>
