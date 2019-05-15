@@ -63,6 +63,11 @@
         & .date {
             color: #7f8c8d;
         }
+
+        @media (max-width: 768px) {
+            &:not(:last-child) {
+                margin-bottom: 35px;
+            }
+        }
     }
-    
 }

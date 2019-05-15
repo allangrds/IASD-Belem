@@ -57,5 +57,3 @@ Ainda será escrito.
 
 ## Contribuindo
 Por favor, leia o arquivo [CONTRIBUTING.md](.github/CONTRIBUTING.md) para entender os detalhes do código e de nosso código de conduta.
-
-

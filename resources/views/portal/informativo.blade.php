@@ -5,141 +5,93 @@
 
     <div class="page">
         <div class="header container">
-            <span class="date">
-                <time datetime="2017-02-14">
-                    20 de janeiro de 2018
-                </time>
-            </span>
-            <h1 class="title">Informativo</h1>
+            @if ($schedule)
+                <span class="date">
+                    <time datetime={{date('d/m/Y')}}>
+                        {{ date('d/m/Y') }}
+                    </time>
+                </span>
+                <h1 class="title">Informativo</h1>
+            @else
+                <h1 class="title">Hoje não existe informativo</h1>
+            @endif
         </div>
 
-        <div class="content">
-            <div class="container">
-                <div class="columns informative">
-                    <div class="column is-3">
-                        <div class="floated-box">
-                            <div class="title-box">
-                                <span class="title">Programação</span>
-                                <hr class="line" />
-                            </div>
-                            <div class="columns">
-                                <div class="column is-3">09:30</div>
-                                <div class="column is-9">
-                                    <ul class="list">
-                                        <li>Boas vindas</li>
-                                        <li>Ministério de Louvor</li>
-                                    </ul>
+        @if ($schedule)
+            <div class="content">
+                <div class="container">
+                    <div class="columns informative">
+                        <div class="column is-3">
+                            <div class="floated-box">
+                                <div class="title-box">
+                                    <span class="title">Programação</span>
+                                    <hr class="line" />
                                 </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column is-3">10:30</div>
-                                <div class="column is-9">
-                                    <ul class="list">
-                                        <li>Mensagem pastoral</li>
-                                        <li>Louvor</li>
-                                        <li>Intervalo</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column is-3">11:10</div>
-                                <div class="column is-9">
-                                    <ul class="list">
-                                        <li>Escola sabatina</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column is-3">12:10</div>
-                                <div class="column is-9">
-                                    <ul class="list">
-                                        <li>Encerramento</li>
-                                    </ul>
-                                </div>
+                                @foreach($schedule->times as $time)
+                                    <div class="columns">
+                                        <div class="column is-3">{{ $time->time }}</div>
+                                        <div class="column is-9">
+                                            <ul class="list">
+                                                @foreach ($time->descriptions as $description)
+                                                    <li>{{ $description->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="floated-box">
-                            <div class="title-box">
-                                <span class="title">Anúncios</span>
-                                <hr class="line" />
-                            </div>
-                            <div class="columns notice">
-                                <div class="column">
-                                    <p class="title">Título do anúncio</p>
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Proin dapibus, quam sit
-                                        amet aliquam posuere, libero massa
-                                        sagittis augue, quis elementum augue
-                                        purus in justo. Aliquam ac nisl eu nibh
-                                        lacinia placerat. Vestibulum quis nibh
-                                        vitae elit egestas iaculis. Integer
-                                        tempus iaculis malesuada. Fusce in
-                                        tempus lorem.
-                                    </p>
+                        <div class="column is-3">
+                            <div class="floated-box">
+                                <div class="title-box">
+                                    <span class="title">Anúncios</span>
+                                    <hr class="line" />
                                 </div>
-                            </div>
-                            <div class="columns notice">
-                                <div class="column">
-                                    <p class="title">Título do anúncio</p>
-                                    <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Proin dapibus, quam sit
-                                        amet aliquam posuere, libero massa
-                                        sagittis augue, quis elementum augue
-                                        purus in justo. Aliquam ac nisl eu nibh
-                                        lacinia placerat. Vestibulum quis nibh
-                                        vitae elit egestas iaculis. Integer
-                                        tempus iaculis malesuada. Fusce in
-                                        tempus lorem.
-                                    </p>
-                                </div>
+                                @foreach ($news as $new)
+                                    <div class="columns notice">
+                                        <div class="column">
+                                            <p class="title">{{ $new->title }}</p>
+                                            <p class="text">
+                                                {{ $new->description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="floated-box">
-                            <div class="title-box">
-                                <span class="title">Aniversariantes</span>
-                                <hr class="line" />
-                            </div>
-                            <div class="columns">
-                                <div class="column birthday">
-                                    <figure class="image is-128x128">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                    </figure>
-                                    <span class="title">José Aguilar</span>
-                                    <span class="date">25 anos</span>
+                        <div class="column">
+                            <div class="floated-box">
+                                <div class="title-box">
+                                    <span class="title">Aniversariantes da semana</span>
+                                    <hr class="line" />
                                 </div>
-                                <div class="column birthday">
-                                    <figure class="image is-128x128">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                    </figure>
-                                    <span class="title">José Aguilar</span>
-                                    <span class="date">25 anos</span>
-                                </div>
-                                <div class="column birthday">
-                                    <figure class="image is-128x128">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                    </figure>
-                                    <span class="title">José Aguilar</span>
-                                    <span class="date">25 anos</span>
-                                </div>
-                                <div class="column birthday">
-                                    <figure class="image is-128x128">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                                    </figure>
-                                    <span class="title">José Aguilar</span>
-                                    <span class="date">25 anos</span>
+                                <div class="columns">
+                                    @foreach($members as $member)
+                                        <div class="column birthday flex-column align-items-center">
+                                            <figure class="image is-128x128">
+                                                <img
+                                                    class="is-rounded"
+                                                    src="/storage/images/photos/{{ $member->image }}"
+                                                    alt={{$member->name}}
+                                                >
+                                            </figure>
+                                            <span class="title">{{ $member->name }}</span>
+                                            <span class="date">
+                                                {{ Carbon\Carbon::parse($member->born_at)->age }} anos
+                                            </span>
+                                        </div>
+                                        @if ($loop->iteration % 3 == 0)
+                                            </div>
+                                            <div class="columns">
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 
     @include('portal.template.footer')

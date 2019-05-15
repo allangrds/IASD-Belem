@@ -1,8 +1,24 @@
 <?php
 
-Route::middleware('throttle:25,1')->group(function () {
+use App\ChurchMembers;
+use App\News;
+use App\Photos;
+use App\Schedule;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
+Route::middleware('throttle:15,1')->group(function () {
     Route::get('/', function () {
-        return view('portal.home');
+        $news = News::whereDate('published_at', '<=', date('Y-m-d'))
+            ->where('show_on_home', true)
+            ->paginate(5);
+        $photos = Photos::join('news', 'news.id', '=', 'photos.news_id')
+            ->whereDate('news.published_at', '<=', date('Y-m-d'))
+            ->paginate(3);
+
+        return view('portal.home')
+            ->with('photos', $photos)
+            ->with('news', $news);
     })->name('portal_home');
 
     Route::get('/lideranca', function () {
@@ -19,8 +35,51 @@ Route::middleware('throttle:25,1')->group(function () {
             ->with('functions', $functions);
     })->name('portal_lideranca');
 
+    Route::get('/noticias/{id}', function ($id) {
+        $new = News::where('id', $id)->first();
+        $photos =  Photos::where('news_id', $new->id)->get();
+
+        return view('portal.new')
+            ->with('new', $new)
+            ->with('photos', $photos);
+    })->name('portal_noticias_descricacao');
+
     Route::get('/informativo', function () {
-        return view('portal.informativo');
+        $weekMap = [
+            0 => 'domingo',
+            1 => 'segunda',
+            2 => 'terca',
+            3 => 'quarta',
+            4 => 'quinta',
+            5 => 'sexta',
+            6 => 'sabado',
+        ];
+        $dayOfTheWeek = Carbon::now()->dayOfWeek;
+        $weekday = $weekMap[$dayOfTheWeek];
+
+        $schedule = Schedule::where('is_active', true)
+            ->where('specific_day', date('Y-m-d'))
+            ->orWhere('week_day', $weekday)
+            ->orderBy('specific_day', 'desc')
+            ->first();
+        $members = null;
+
+        $news = null;
+
+        if ($schedule) {
+            $news = News::whereDate('published_at', '=', date('Y-m-d'))
+                ->where('show_on_informative', true)
+                ->get();
+
+            $members = ChurchMembers::where(DB::raw('DAY(born_at)'), '=', date('d'))
+                ->where(DB::raw('MONTH(born_at)'), '=', date('m'))
+                ->get();
+        }
+
+        return view('portal.informativo')
+            ->with('news', $news)
+            ->with('schedule', $schedule)
+            ->with('members', $members);
     })->name('portal_informativo');
 
     Route::get('/fale-conosco', function () {
@@ -35,7 +94,7 @@ Route::middleware('throttle:25,1')->group(function () {
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-Route::middleware(['throttle:25,1', 'auth'])->group(function () {
+Route::middleware(['throttle:25,1', 'auth'])->prefix('administrativo')->group(function () {
     Route::get('/painel', 'Panel\PanelController@index')
         ->name('panel_home');
 
@@ -124,6 +183,54 @@ Route::middleware(['throttle:25,1', 'auth'])->group(function () {
 
             Route::delete('/', 'Panel\DepartmentsController@destroy')
                 ->name('panel_departments_destroy');
+        });
+    });
+
+    Route::prefix('programacoes')->group(function () {
+        Route::get('/', 'Panel\ScheduleController@index')
+            ->name('panel_schedule');
+
+        Route::prefix('criar')->group(function () {
+            Route::get('/', 'Panel\ScheduleController@create')
+                ->name('panel_schedule_create');
+
+            Route::post('/', 'Panel\ScheduleController@store')
+                ->name('panel_schedule_store');
+        });
+
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', 'Panel\ScheduleController@edit')
+                ->name('panel_schedule_edit');
+
+            Route::patch('/', 'Panel\ScheduleController@update')
+                ->name('panel_schedule_update');
+
+            Route::delete('/', 'Panel\ScheduleController@destroy')
+                ->name('panel_schedule_destroy');
+        });
+    });
+
+    Route::prefix('noticias')->group(function () {
+        Route::get('/', 'Panel\NewsController@index')
+            ->name('panel_news');
+
+        Route::prefix('criar')->group(function () {
+            Route::get('/', 'Panel\NewsController@create')
+                ->name('panel_news_create');
+
+            Route::post('/', 'Panel\NewsController@store')
+                ->name('panel_news_store');
+        });
+
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', 'Panel\NewsController@edit')
+                ->name('panel_news_edit');
+
+            Route::patch('/', 'Panel\NewsController@update')
+                ->name('panel_news_update');
+
+            Route::delete('/', 'Panel\NewsController@destroy')
+                ->name('panel_news_destroy');
         });
     });
 });

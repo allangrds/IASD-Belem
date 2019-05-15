@@ -190,7 +190,7 @@
                                     </span>
                                 </label>
                             </div>
-                            <p class="filename"></p>
+                            <p class="file-name"></p>
                             @if ($errors->has('photo'))
                                 <span class="has-text-danger" role="alert">
                                     {{ $errors->first('photo') }}

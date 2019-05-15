@@ -18,13 +18,13 @@
         "babel-eslint": "10.0.1",
         "commitizen": "3.0.7",
         "cross-env": "5.2.0",
-        "cssnano": "4.1.8",
+        "cssnano": "4.1.10",
         "cz-conventional-changelog": "2.1.0",
         "eslint": "5.13.0",
         "eslint-config-airbnb": "17.1.0",
         "eslint-plugin-import": "2.16.0",
         "font-awesome": "4.7.0",
-        "laravel-mix": "4.0.14",
+        "laravel-mix": "4.0.15",
         "postcss": "7.0.14",
         "postcss-css-variables": "0.11.0",
         "postcss-cssnext": "3.1.0",
@@ -38,5 +38,8 @@
             "path": "./node_modules/cz-conventional-changelog"
         }
     },
-    "snyk": true
+    "snyk": true,
+    "dependencies": {
+        "flatpickr": "4.5.7"
+    }
 }

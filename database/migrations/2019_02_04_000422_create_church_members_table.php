@@ -21,7 +21,7 @@ class CreateChurchMembersTable extends Migration
             $table->date('born_at');
             $table->string('image', 255)->nullable();
             $table->boolean('is_active')->default(true);
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
