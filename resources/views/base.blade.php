@@ -1,5 +1,17 @@
 <!doctype html>
-<html lang="pt-br">
+<html
+    lang="pt-br"
+    @if(
+        Route::currentRouteName() !== 'portal_home' &&
+        Route::currentRouteName() !== 'portal_lideranca' &&
+        Route::currentRouteName() !== 'portal_informativo' &&
+        Route::currentRouteName() !== 'portal_contato' &&
+        Route::currentRouteName() !== 'portal_noticias_descricacao' &&
+        Route::currentRouteName() !== 'login'
+    )
+        class="panel-background"
+    @endif
+>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

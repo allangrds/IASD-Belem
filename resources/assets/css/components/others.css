@@ -1,5 +1,4 @@
 .panel {
-  background-color: #ECF0F3;
   height: 100%;
 
   & > .navbar {
@@ -13,4 +12,8 @@
   & .hero-body {
       padding-left: 0;
   }
+}
+
+.panel-background {
+    background-color: #ECF0F3;
 }

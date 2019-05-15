@@ -17,7 +17,7 @@ class CreateFunctionTable extends Migration
             $table->increments('id');
             $table->string('name', 25)->unique();
             $table->boolean('is_active')->default(true);
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

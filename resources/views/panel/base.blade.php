@@ -118,6 +118,44 @@
                                 </a>
                             </li>
                         </ul>
+                        <p class="menu-label">
+                            Programações
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_schedule_create') is-active @endif"
+                                   href={{ route('panel_schedule_create') }}
+                                >
+                                    Criar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_schedule') is-active @endif"
+                                   href={{ route('panel_schedule') }}
+                                >
+                                    Listagem
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="menu-label">
+                            Notícias
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_news_create') is-active @endif"
+                                   href={{ route('panel_news_create') }}
+                                >
+                                    Criar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="@if (Route::currentRouteName() === 'panel_news') is-active @endif"
+                                   href={{ route('panel_news') }}
+                                >
+                                    Listagem
+                                </a>
+                            </li>
+                        </ul>
                         @if(Auth::user()->can('handle_user'))
                             <p class="menu-label">
                                 Usuários
