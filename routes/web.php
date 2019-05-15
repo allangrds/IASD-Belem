@@ -21,6 +21,10 @@ Route::middleware('throttle:15,1')->group(function () {
             ->with('news', $news);
     })->name('portal_home');
 
+    Route::get('/culto-ao-vivo', function () {
+        return view('portal.live');
+    })->name('portal_culto');
+
     Route::get('/lideranca', function () {
         $functions = App\MemberFunction::get(['id', 'name']);
         $departments = App\Departments::get(['id', 'name']);
