@@ -19,3 +19,5 @@ public/fonts
 storage/logs
 storage/app/public/images
 .idea/
+/public/build
+/public/mix-manifest.json

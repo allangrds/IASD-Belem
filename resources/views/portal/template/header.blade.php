@@ -30,9 +30,11 @@
                         home
                     </a>
                     <a class="
-                        navbar-item
-                        @if (Route::currentRouteName() === 'portal_culto') is-active @endif"
-                    ">
+                            navbar-item
+                            @if (Route::currentRouteName() === 'portal_culto') is-active @endif"
+                        "
+                        href={{ route('portal_culto') }}
+                    >
                         culto ao vivo
                     </a>
                     <a class="
