@@ -5,12 +5,6 @@
                 alt="IASD Belém - Logo"
                 src="/images/footer/logo.png"
             />
-            <span class="title">Sobre nós</span>
-            <p class="text about">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                hendrerit pharetra justo id bibendum. Ut ornare felis a mauris
-                elementum, sed aliquet erat mollis.
-            </p>
         </div>
         <div class="column">
             <div class="columns">

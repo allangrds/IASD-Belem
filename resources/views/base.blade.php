@@ -3,6 +3,7 @@
     lang="pt-br"
     @if(
         Route::currentRouteName() !== 'portal_home' &&
+        Route::currentRouteName() !== 'portal_culto' &&
         Route::currentRouteName() !== 'portal_lideranca' &&
         Route::currentRouteName() !== 'portal_informativo' &&
         Route::currentRouteName() !== 'portal_contato' &&
