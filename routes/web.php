@@ -4,8 +4,11 @@ use App\ChurchMembers;
 use App\News;
 use App\Photos;
 use App\Schedule;
+use App\Mail\ContactEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 Route::middleware('throttle:15,1')->group(function () {
     Route::get('/', function () {
@@ -107,6 +110,24 @@ Route::middleware('throttle:15,1')->group(function () {
     Route::get('/fale-conosco', function () {
         return view('portal.contato');
     })->name('portal_contato');
+
+    Route::post('/fale-conosco', function (Request $request) {
+        $request->validate([
+            'name' => 'required|max:15',
+            'email' => 'required|email|max:40',
+            'message' => 'required|max:1000',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'emailMessage' => $request->message,
+        ];
+
+        Mail::to(env('MAIL_TO'))->send(new ContactEmail($data));
+
+        return back()->with('message', 'Email enviado.');
+    })->name('portal_contato_post');
 
     Route::prefix('login')->group(function () {
         Route::get('/', 'Auth\LoginController@show')->name('login');
