@@ -11,8 +11,25 @@
         <div class="content">
             <div class="container">
                 <div class="columns">
+                    <div class="column">
+                        @if (session('message'))
+                            <div class="notification is-success">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->has('page'))
+                            <div class="notification is-danger">
+                                {{ $errors->first('page') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="columns">
                     <div class="column is-8">
-                        <form action="">
+                        <form method="POST" action="{{ route('portal_contato_post') }}">
+                            @csrf
                             <div class="columns">
                                 <div class="column">
                                     <input
@@ -22,6 +39,11 @@
                                         placeholder="Digite seu nome"
                                         type="text"
                                     />
+                                    @if ($errors->has('name'))
+                                        <span class="has-text-danger" role="alert">
+                                            {{ $errors->first('name') }}
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="column">
                                     <input
@@ -31,6 +53,11 @@
                                         placeholder="Digite seu email"
                                         type="text"
                                     />
+                                    @if ($errors->has('email'))
+                                        <span class="has-text-danger" role="alert">
+                                            {{ $errors->first('email') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="columns">
@@ -41,6 +68,11 @@
                                         name="message"
                                         placeholder="Digite sua mensagem"
                                     ></textarea>
+                                    @if ($errors->has('message'))
+                                        <span class="has-text-danger" role="alert">
+                                            {{ $errors->first('message') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <input

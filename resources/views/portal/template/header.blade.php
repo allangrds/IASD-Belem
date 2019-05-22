@@ -53,12 +53,6 @@
                         liderança
                     </a>
                     <a class="
-                        navbar-item
-                        @if (Route::currentRouteName() === 'portal_historia') is-active @endif"
-                    ">
-                        nossa história
-                    </a>
-                    <a class="
                             navbar-item
                             @if (Route::currentRouteName() === 'portal_contato') is-active @endif"
                         "
@@ -97,7 +91,7 @@
     </div>
     <div class="hero">
         <div class="container logo-container">
-            <a href="href={{ route('portal_home') }}">
+            <a href={{ route('portal_home')}}>
                 <img
                     alt="IASD Belém - Logo"
                     class="logo"

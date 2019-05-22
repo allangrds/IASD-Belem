@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            @if (!$schedule)
+            @if ($schedule)
                 <div class="column floated-box is-3-desktop is-3-tablet">
                     <div class="content">
                         <img
